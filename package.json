@@ -1,0 +1,18 @@
+{
+  "name": "yuki",
+  "version": "1.0.0",
+  "description": "TeamSpeak bot tracking users' online time",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r dotenv/config index"
+  },
+  "author": "Arkadiusz Sygulski <arkadiusz@sygulski.pl> (https://sygulski.pl/)",
+  "private": true,
+  "dependencies": {
+    "better-sqlite3": "^5.4.2",
+    "dotenv": "^7.0.0",
+    "humanize-duration": "^3.20.1",
+    "ts3-nodejs-library": "^2.0.2"
+  }
+}
