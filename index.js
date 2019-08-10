@@ -100,8 +100,6 @@ class Yuki {
   }
 
   async updateClient (client) {
-    if (client.nickname !== 'Mole') return
-
     const connectionTime = Date.now() - client.lastconnected * 1000
 
     const user = this.getUser(client)
