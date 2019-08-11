@@ -21,7 +21,7 @@ class User {
   }
 
   get rank () {
-    return Math.floor(Math.log(this.hoursOnline) / Math.log(1.55))
+    return Math.floor(Math.log(1 + this.hoursOnline) / Math.log(1.55))
   }
 
   get rankGroup () {
@@ -29,8 +29,8 @@ class User {
   }
 
   get timeToPromotion () {
-    const hoursToPromotion = Math.pow(1.55, this.rank + 1) - Math.pow(1.55, this.rank)
-    return hoursToPromotion * 60 * 60 * 1000
+    const nextPromotionTime = Math.pow(1.55, this.rank + 1) * 60 * 60 * 1000
+    return nextPromotionTime - this.totalTime
   }
 }
 
@@ -113,7 +113,6 @@ class Yuki {
     if (!client.servergroups.length) await client.addGroups(47)
 
     const clientRankGroups = client.servergroups.filter(groupId => groupId >= 14 && groupId <= 46)
-
     if (!clientRankGroups.includes(user.rankGroup)) {
       await client.addGroups(user.rankGroup)
       client.message(`Gratuluję! Twoja nowa ranga to [b]${user.rank}[/b], czas pozostały do kolejnej rangi to [b]${humanizeDuration(user.timeToPromotion, { round: true, language: 'pl' })}[/b]`)
