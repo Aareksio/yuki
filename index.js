@@ -110,9 +110,9 @@ class Yuki {
   }
 
   async updateGroups (client, user) {
-    if (!client.servergroups.length) await client.addGroups(47)
-
     const clientRankGroups = client.servergroups.filter(groupId => groupId >= 14 && groupId <= 46)
+    if (!clientRankGroups.length) await client.addGroups(47)
+
     if (!clientRankGroups.includes(user.rankGroup)) {
       await client.addGroups(user.rankGroup)
       client.message(`Gratuluję! Twoja nowa ranga to [b]${user.rank}[/b], czas pozostały do kolejnej rangi to [b]${humanizeDuration(user.timeToPromotion, { round: true, language: 'pl' })}[/b]`)
