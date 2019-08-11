@@ -111,7 +111,7 @@ class Yuki {
 
   async updateGroups (client, user) {
     const clientRankGroups = client.servergroups.filter(groupId => groupId >= 14 && groupId <= 46)
-    if (!clientRankGroups.length) await client.addGroups(47)
+    if (!clientRankGroups.length && !client.servergroups.includes(47)) await client.addGroups(47)
 
     if (!clientRankGroups.includes(user.rankGroup)) {
       await client.addGroups(user.rankGroup)
